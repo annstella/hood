@@ -69,3 +69,30 @@ class NeighbourHood(models.Model):
     def get_by_id(cls,id):
         neigborhood = Neigborhood.objects.get(user = id)
         return neigborhood 
+
+class Business(models.Model):
+    business_name = models.CharField(max_length =30)
+    business_email = models.EmailField()
+    user = models.ForeignKey(User)
+   
+    def __str__(self):                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
+        return self.user.username
+
+    def save_business(self):
+        self.save()  
+
+    def delete_business(self):
+        self.delete()  
+
+    @classmethod
+    def update_business(cls,update):
+        pass
+     
+    @classmethod
+    def search_by_business(cls,name):
+        business= Business.objects.filter(user__username__icontains=name)
+        return business
+    @classmethod 
+    def get_by_id(cls,id):
+        business = Business.objects.get(user = id)
+        return business        
