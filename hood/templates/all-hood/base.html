@@ -13,17 +13,17 @@
 
 {% block styles %}
   {% bootstrap_css %}
-  <link rel="stylesheet" href="{% static 'css/basenews.css' %}">
+  <link rel="stylesheet" href="{% static 'css/basehood.css' %}">
 {% endblock %}
 
 </head>
 <body>
 
-    {% include "navbar.html" %}
+ {% include "navbar.html" %}
 
-    {% block content %} <h1 class='text-center'>Neighbourhood </h1> {%endblock%}
+ {% block content %} <h1 class='text-center'>Neighbourhood </h1> {%endblock%}
 
-    {% block scripts %}
+ {% block scripts %}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
  {% bootstrap_javascript %}
 {% endblock %}
