@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect
-from django.http  import HttpResponse
+from django.http  import HttpResponse, Http404,HttpResponseRedirect
 from .models import Profile, Business, NeighbourHood
 import datetime as dt
 from .email import send_welcome_email
