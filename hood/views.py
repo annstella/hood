@@ -3,9 +3,11 @@ from django.http  import HttpResponse, Http404,HttpResponseRedirect
 from .models import Profile, Business, NeighbourHood
 import datetime as dt
 from .email import send_welcome_email
+from django.contrib.auth.decorators import login_required.
 # from .forms import NewsLetterForm
 
 # Create your views here.
+@login_required(login_url='/accounts/login/')
 def welcome(request):
     # hood = Business.objects.all() 
     return render(request,'index.html', locals())
@@ -24,6 +26,7 @@ def search_results(request):
         message = "You haven't searched for any term"
         return render(request, 'all-hood/search.html',{"message":message})
 
+@login_required(login_url='/accounts/login/')
 def business(request, user_id):
     """
     Function that enables one to see their profile
@@ -47,6 +50,7 @@ def business(request, user_id):
 #         form = BusinessForm()
 #     return render(request, "new_business.html", {"form":form}) 
 
+@login_required(login_url='/accounts/login/')
 def profile(request, user_id):
     """
     Function that enables one to see their profile
