@@ -3,7 +3,7 @@ from django.http  import HttpResponse, Http404,HttpResponseRedirect
 from .models import Profile, Business, NeighbourHood
 import datetime as dt
 from .email import send_welcome_email
-from .forms import NewsLetterForm
+# from .forms import NewsLetterForm
 
 # Create your views here.
 def welcome(request):
