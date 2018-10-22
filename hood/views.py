@@ -2,6 +2,8 @@ from django.shortcuts import render,redirect
 from django.http  import HttpResponse
 from .models import Profile, Business, NeighbourHood
 import datetime as dt
+from .email import send_welcome_email
+from .forms import NewsLetterForm
 
 # Create your views here.
 def welcome(request):
@@ -53,3 +55,18 @@ def profile(request, user_id):
     profiles = User.objects.get(id=user_id)
     user = User.objects.get(id=user_id)
     return render(request, 'profile/profile.html',{'title':title,"profiles":profiles})
+
+def hood(request):
+    if request.method == 'POST':
+        form = NewsLetterForm(request.POST)
+        if form.is_valid():
+            name = form.cleaned_data['your_name']
+            email = form.cleaned_data['email']
+
+            recipient = NewsLetterRecipients(name = name,email =email)
+            recipient.save()
+            send_welcome_email(name,email)
+
+            HttpResponseRedirect('hood')
+            #.................
+    return render(request, 'index.html', {"hood":hood,"letterForm":form})
