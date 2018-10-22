@@ -36,19 +36,20 @@ def business(request, user_id):
     user = User.objects.get(id=user_id)
     return render(request, 'business.html',{'title':title,"businesses":businesses})
 
-# def new_business(request):
-#     current_user = request.user
-#     businesses=Business.objects.get(user=request.user)
-#     hood= Business.objects.get(user=request.user)
-#     if request.method == 'POST':
-#         form = BusinessForm(request.POST, request.FILES,instance=request.user.profile)
-#         if form.is_valid():
-#             form.save()
-#         return redirect('/')
+@login_required(login_url='/accounts/login/')
+def new_business(request):
+    current_user = request.user
+    businesses=Business.objects.get(user=request.user)
+    hood= Business.objects.get(user=request.user)
+    if request.method == 'POST':
+        form = BusinessForm(request.POST, request.FILES,instance=request.user.profile)
+        if form.is_valid():
+            form.save()
+        return redirect('/')
 
-#     else:
-#         form = BusinessForm()
-#     return render(request, "new_business.html", {"form":form}) 
+    else:
+        form = BusinessForm()
+    return render(request, "new_business.html", {"form":form}) 
 
 @login_required(login_url='/accounts/login/')
 def profile(request, user_id):
