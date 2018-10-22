@@ -1,0 +1,20 @@
+{%extends 'all-hood/base.html'%}
+
+ {% block content %}
+
+ <div class="container">
+
+   <div class="row">
+     <img src="{{Business.Business_image.url}}"  class="img-responsive" alt="">
+   </div>
+
+   <div class="row">
+     <h1 class="text-center">{{Business.title}}</h1>
+   </div>
+
+   <div class="row">
+     <p>{{Business.post}}</p>
+   </div>
+ </div>
+
+ {% endblock %}

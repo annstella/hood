@@ -44,3 +44,12 @@ def business(request, user_id):
 #     else:
 #         form = BusinessForm()
 #     return render(request, "new_business.html", {"form":form}) 
+
+def profile(request, user_id):
+    """
+    Function that enables one to see their profile
+    """
+    title = "Profile"
+    profiles = User.objects.get(id=user_id)
+    user = User.objects.get(id=user_id)
+    return render(request, 'profile/profile.html',{'title':title,"profiles":profiles})
