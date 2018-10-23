@@ -49,7 +49,7 @@ def new_business(request):
 			business = form.save(commit = False)
 			business.user = request.user
 			business.save()
-			messages.success(request, 'You Have succesfully created a hood.You may now join your neighbourhood')
+			messages.success(request, 'You Have succesfully created a business')
 			return redirect('business')
 
 	else:
