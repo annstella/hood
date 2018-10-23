@@ -21,10 +21,4 @@ class BusinessForm(forms.ModelForm):
         model =Business
         exclude=['user']    
             
-class NewHoodForm(forms.ModelForm):
-    class Meta:
-        model = NeighbourHood
-        exclude = ['user']
-        widgets = {
-            'likes': forms.CheckboxSelectMultiple(),
-    } 
+ 
